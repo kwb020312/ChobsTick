@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={inter.className}>
         <div className="flex flex-col h-screen max-h-screen">
           <Nav />
