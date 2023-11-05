@@ -27,12 +27,22 @@ const TicketForm = ({ ticket }: TicketFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await fetch("/api/Tickets", {
-      method: "POST",
-      body: JSON.stringify({ formData }),
-    });
 
-    if (!res.ok) throw new Error("Failed to create Ticket.");
+    if (EDITMODE) {
+      const res = await fetch(`/api/Tickets/${ticket._id}`, {
+        method: "PUT",
+        body: JSON.stringify({ formData }),
+      });
+
+      if (!res.ok) throw new Error("Failed to Update Ticket.");
+    } else {
+      const res = await fetch("/api/Tickets", {
+        method: "POST",
+        body: JSON.stringify({ formData }),
+      });
+
+      if (!res.ok) throw new Error("Failed to create Ticket.");
+    }
 
     router.refresh();
     router.push("/");
@@ -65,7 +75,9 @@ const TicketForm = ({ ticket }: TicketFormProps) => {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h3 className="">티켓을 생성해주세요😁</h3>
+        <h3 className="">
+          {EDITMODE ? "티켓을 수정해주세요" : "티켓을 생성해주세요"}😁
+        </h3>
         <label>티켓명</label>
         <input
           type="text"
@@ -160,7 +172,11 @@ const TicketForm = ({ ticket }: TicketFormProps) => {
           <option value="started">Started</option>
           <option value="done">Done</option>
         </select>
-        <input type="submit" className="btn" value={"티켓 생성하기"} />
+        <input
+          type="submit"
+          className="btn"
+          value={EDITMODE ? "티켓 수정하기" : "티켓 생성하기"}
+        />
       </form>
     </div>
   );

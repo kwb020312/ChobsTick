@@ -29,3 +29,22 @@ export async function DELETE(
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
 }
+
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const { id } = params;
+    const body = await req.json();
+    const ticketData = body.formData;
+
+    const updateTicketData = await ChobsTick.findByIdAndUpdate(id, {
+      ...ticketData,
+    });
+
+    return NextResponse.json({ message: "Ticket Updated" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: "Error", error }, { status: 500 });
+  }
+}
