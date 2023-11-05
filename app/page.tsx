@@ -1,18 +1,6 @@
 import React from "react";
 import TicketCard from "./(components)/TicketCard";
-
-type TicketType = {
-  _id: string;
-  title: string;
-  description: string;
-  category: string;
-  priority: number;
-  progress: number;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-};
+import { TicketType } from "./(types)/type";
 
 const getTickets = async () => {
   try {
