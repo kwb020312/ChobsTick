@@ -15,7 +15,14 @@ const getTickets = async () => {
 };
 
 const Dashboard = async () => {
-  const { tickets }: { tickets: TicketType[] | undefined } = await getTickets();
+  const data = await getTickets();
+
+  if (!data?.tickets) {
+    return <p>생성된 티켓이 없습니다.</p>;
+  }
+
+  const tickets: TicketType[] = data.tickets;
+
   const uniueCategories = [
     ...new Set(tickets?.map(({ category }) => category)),
   ];
