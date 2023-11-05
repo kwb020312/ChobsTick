@@ -1,9 +1,11 @@
+import TicketForm from "@/app/(components)/TicketForm";
+
 interface TicketPageProps {
   params: { id: string };
 }
 
 const TicketPage = ({ params }: TicketPageProps) => {
-  return <div>TicketPage {params.id}</div>;
+  return <TicketForm />;
 };
 
 export default TicketPage;
