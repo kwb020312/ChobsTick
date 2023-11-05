@@ -54,7 +54,7 @@ const TicketForm = ({ ticket }: TicketFormProps) => {
     priority: 1,
     progress: 0,
     status: "not started",
-    category: "Hardware Problem",
+    category: "하드웨어 문제",
   };
 
   if (EDITMODE) {
@@ -97,15 +97,15 @@ const TicketForm = ({ ticket }: TicketFormProps) => {
           rows={5}
         />
 
-        <label>Category</label>
+        <label>카테고리</label>
         <select
           name="category"
           value={formData.category}
           onChange={handleChange}
         >
-          <option value="Hardware Problem">하드웨어 문제</option>
-          <option value="Software Problem">소프트웨어 문제</option>
-          <option value="Project">프로젝트</option>
+          <option value="하드웨어 문제">하드웨어 문제</option>
+          <option value="소프트웨어 문제">소프트웨어 문제</option>
+          <option value="프로젝트 문제">프로젝트 문제</option>
         </select>
 
         <label>우선순위</label>
@@ -156,7 +156,7 @@ const TicketForm = ({ ticket }: TicketFormProps) => {
           />
           <label htmlFor="">5</label>
         </div>
-        <label htmlFor="">Progress</label>
+        <label htmlFor="">진행도</label>
         <input
           type="range"
           id="progress"
@@ -166,15 +166,15 @@ const TicketForm = ({ ticket }: TicketFormProps) => {
           max={100}
           onChange={handleChange}
         />
-        <label>Status</label>
+        <label>진행상태</label>
         <select name="status" value={formData.status} onChange={handleChange}>
-          <option value="not started">Not Started</option>
-          <option value="started">Started</option>
-          <option value="done">Done</option>
+          <option value="작업 전">작업 전</option>
+          <option value="작업 진행">작업 진행</option>
+          <option value="작업 완료">작업 완료</option>
         </select>
         <input
           type="submit"
-          className="btn"
+          className="btn text-white"
           value={EDITMODE ? "티켓 수정하기" : "티켓 생성하기"}
         />
       </form>

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Score";
+  src: url("/fonts/SCDream5.otf");
+}
+
+* {
+  font-family: "Score";
+}
+
 @layer base {
   h1,
   h2,

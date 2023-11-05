@@ -6,13 +6,13 @@ const StatusDisplay = ({ status }: StatusDisplayProps) => {
   const getColor = (status: string) => {
     let color = "bg-slate-700";
     switch (status.toLowerCase()) {
-      case "done":
+      case "작업 완료":
         color = "bg-green-200";
         break;
-      case "started":
+      case "작업 진행":
         color = "bg-yellow-200";
         break;
-      case "not started":
+      case "작업 전":
         color = "bg-red-200";
         break;
       default:
