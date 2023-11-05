@@ -15,7 +15,7 @@ const getTickets = async () => {
 };
 
 const Dashboard = async () => {
-  const { tickets }: { tickets: TicketType[] } = await getTickets();
+  const { tickets }: { tickets: TicketType[] | undefined } = await getTickets();
   const uniueCategories = [
     ...new Set(tickets?.map(({ category }) => category)),
   ];
